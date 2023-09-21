@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class Main {
     //Methodlar tanımlanır.
-    static int power(int taban, int us) {
-        int result = 1;
-        for (int i = 1; i <= us; i++) {
-            result *= taban;
-        }
-        return result;
+
+    static int calculatePower(int taban, int us) {
+      if (us == 0) {
+          return 1;
+      }
+      int result = calculatePower(taban, us - 1);
+      result *= taban;
+      return result;
     }
 
     //Taban ve üs değerleri kullanıcıdan alınır.
@@ -17,7 +19,6 @@ public class Main {
         int taban = scan.nextInt();
         System.out.print("Üs değerini giriniz: ");
         int us = scan.nextInt();
-
-        System.out.println("Sonuç: " + power(taban, us));
+        System.out.println("Sonuç: " + calculatePower(taban, us));
     }
 }
